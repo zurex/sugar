@@ -1,0 +1,29 @@
+{
+  "name": "sugar",
+  "version": "0.1.0",
+  "description": "sugar is a fast, scalable, distributed engine ",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "scalable",
+    "distributed",
+    "server"
+  ],
+  "author": "zurex",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-core": "^6.21.0",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.18.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "eslint": "^3.12.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.2.0"
+  },
+  "dependencies": {
+    "log4js": "^1.1.0",
+    "socketio": "^1.0.0"
+  }
+}
