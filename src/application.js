@@ -44,7 +44,7 @@ class Application{
           let {id, method, message} = data
           let channel = new Channel(id, message)
           channel.session = this.__session__[id]
-          this.factory[method](socket)
+          this.factory[method](channel)
       })
   }
   start(){

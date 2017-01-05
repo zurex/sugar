@@ -1,5 +1,5 @@
 {
-  "name": "sugar",
+  "name": "sugarit",
   "version": "0.1.0",
   "description": "sugar is a fast, scalable, distributed engine ",
   "main": "index.js",
@@ -12,7 +12,7 @@
     "server"
   ],
   "author": "zurex",
-  "license": "ISC",
+  "license": "GPL-3.0",
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-core": "^6.21.0",
@@ -25,5 +25,17 @@
   "dependencies": {
     "log4js": "^1.1.0",
     "socketio": "^1.0.0"
-  }
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zurex/sugar.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zurex/sugar/issues"
+  },
+  "homepage": "https://github.com/zurex/sugar#readme"
 }
