@@ -4,8 +4,8 @@ import path from 'path'
 import ioclient from 'socket.io-client'
 import log4js from 'log4js'
 import pkg from '../package.json'
-import Channel from './module/channel'
-import {InMemorySession} from './module/session'
+import Channel from './modules/channel'
+import {InMemorySession} from './modules/session'
 
 const logger = log4js.getLogger()
 
@@ -14,7 +14,8 @@ class Application{
     this.group = group
     this.configPath = configPath
     this.index = index
-    this.__session = new InMemorySession()
+    this.__session__ = new InMemorySession()
+    this.__channel__ = {}
     this.loadConfig()
     this.loadComponents()
     this.loadFactory()
@@ -42,13 +43,33 @@ class Application{
   registerIO(){
       process.on('message', data=>{
           let {id, method, message} = data
-          let channel = new Channel(id, message)
-          channel.session = this.__session__[id]
+          let channel = this.__channel__[id]
+          if(!channel){
+            channel = new Channel(id, this.set.bind(this), this.get.bind(this))
+            this.__channel__[id] = channel
+          }
+          channel.message = message
           this.factory[method](channel)
       })
   }
+  /**
+   * @param key {string}
+   * @param value {any}
+   */
+  set(key ,value){
+    this.io.emit('session', {'key': key, 'value': value})
+  }
+  /**
+   * @param key {string}
+   */
+  get(key){
+    return this.__session__[key]
+  }
   start(){
-      this.io = ioclient('ws://127.0.0.1:4000', {transports: ['websocket']})
+      this.io = ioclient('ws://127.0.0.1:4000/channel', {transports: ['websocket']})
+      this.io.on('session', (session)=>{
+        this.__session__ = session
+      })
       logger.info(`${this.name} start [group: ${this.group}]`)
   }
 }

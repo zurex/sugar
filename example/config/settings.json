@@ -1,5 +1,8 @@
 {
     "gate": [
         {"name": "gate-server-1"}
+    ],
+    "whale": [
+        {"name": "whale-server-1"}
     ]
 }

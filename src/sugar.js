@@ -3,6 +3,7 @@ import path from 'path'
 import child_process from 'child_process'
 import log4js from 'log4js'
 import socketio from 'socket.io'
+import {InMemorySession} from './modules/session'
 
 const logger = log4js.getLogger()
 const defaultOpts = {
@@ -17,6 +18,7 @@ export default class Sugar{
     this.__appIO__ = {}
     this.__appConf__ = {}
     this.__socket__ = {}
+    this.__session__ = new InMemorySession()
     this.__conf__ = Object.assign(defaultOpts, opts)
   }
   loadConfig(){
@@ -57,6 +59,15 @@ export default class Sugar{
               this.__appIO__[appName].forEach(method=>{
                   socket.on(`${appName}.${method}`, this.dispatchEvent.bind(this, appName, method, socket))
               })
+          })
+      })
+      this.channel = this.io.of('/channel')
+      this.channel.on('connection', socket=>{
+          logger.info("app channel connect")
+          socket.on('session', data=>{
+              let {key, value} = data
+              this.__session__[key] = value
+              this.channel.emit('session', this.__session__)
           })
       })
   }

@@ -1,10 +1,11 @@
 import {InMemorySession} from './session'
 
 export default class Channel{
-    constructor(id, message){
+    constructor(id, set, get){
         this.id = id
-        this.message = message
-        //this.session = new InMemorySession()
+        this.session = new InMemorySession()
+        this.set = set
+        this.get = get
     }
     send(message){
         process.send({id:this.id, message:message})

@@ -34,12 +34,12 @@
         <script src="http://cdn.bootcss.com/socket.io/1.7.2/socket.io.js"></script>
         <script>
             let socket = io.connect("ws://127.0.0.1:4000", {transports:['websocket']})
-            document.getElementById('sugar').onsubmit(function(e){
+            document.getElementById('sugar').onsubmit = function(e){
                 e.preventDefault()
                 let eventName = e.target[0].value
                 let data = e.target[1].value
-                console.log(eventName, data)
-            })
+                socket.emit(eventName, JSON.parse(data))
+            }
         </script>
     </body>
 </html>

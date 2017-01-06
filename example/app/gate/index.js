@@ -1,3 +1,4 @@
-export function match(socket){
-    socket.send({'response': socket.message})
+export function match(channel){
+    channel.send({'response': channel.message})
+    channel.set('user', channel.message)
 }
