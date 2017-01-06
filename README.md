@@ -24,6 +24,7 @@ start your server now
 
 finnnaly, call it by socketio `socket.emit({yourapp}.hello)`      
 see more detail in ./example
+
 ## usage
 ### channel
 #### send

@@ -43,9 +43,9 @@ export default class Sugar{
                 '--index', index
             ])
             app.on('message', data=>{
-                let {id, message} = data
+                let {id, name, message} = data
                 let socket = this.__socket__[id]
-                socket.emit(message)
+                socket.emit(name, message)
             })
             this.__app__[name].push(app)
         })

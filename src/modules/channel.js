@@ -7,7 +7,7 @@ export default class Channel{
         this.set = set
         this.get = get
     }
-    send(message){
-        process.send({id:this.id, message:message})
+    send(name, message){
+        process.send({id:this.id, name:name, message:message})
     }
 }
