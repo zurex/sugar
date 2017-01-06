@@ -1,1 +1,1 @@
-module.exports = require('./src/sugar')
+module.exports = require('./lib/sugar')
