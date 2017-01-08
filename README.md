@@ -30,13 +30,16 @@ see more detail in ./example
 #### send
 @param message {object}    
 send it to client
+
 #### set
 @param key {string}    
 @param value {any}
 set a value to global session
+
 #### get
 @param key {string}      
 get a value by key from global session
+
 #### session
 just like a object, it is a local variable, could not read it from a another process
 

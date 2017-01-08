@@ -32,22 +32,22 @@ export default class Sugar{
   }
   loadApplication(){
     let appPath = path.join(__dirname, 'application.js')
-    Object.keys(this.__appConf__).forEach(name=>{
-        logger.info(`load app [${name}]`)
-        this.__app__[name] = []
-        this.__appIO__[name] = this.loadAppMethod(name)
-        this.__appConf__[name].forEach((conf, index)=>{
+    Object.keys(this.__appConf__).forEach(appName=>{
+        logger.info(`load app [${appName}]`)
+        this.__app__[appName] = []
+        this.__appIO__[appName] = this.loadAppMethod(appName)
+        this.__appConf__[appName].forEach((conf, index)=>{
             let app = child_process.fork(appPath, [
-                '--group', name, 
+                '--group', appName, 
                 '--config', this.__conf__.configFile,
                 '--index', index
             ])
             app.on('message', data=>{
                 let {id, name, message} = data
                 let socket = this.__socket__[id]
-                socket.emit(name, message)
+                socket.emit(`${appName}.${name}`, message)
             })
-            this.__app__[name].push(app)
+            this.__app__[appName].push(app)
         })
     })
   }
