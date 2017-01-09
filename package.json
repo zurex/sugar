@@ -1,6 +1,6 @@
 {
   "name": "sugarit",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "sugar is a fast, scalable, distributed engine ",
   "main": "index.js",
   "scripts": {
