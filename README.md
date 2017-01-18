@@ -1,4 +1,6 @@
 # sugarit
+[![NPM](https://nodei.co/npm/sugarit.png)](https://nodei.co/npm/sugarit/)
+
 sugarit is a easy use server
 ## quickstart
 register your app in ./config/settings.json
