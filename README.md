@@ -1,5 +1,5 @@
 # sugarit
-[![NPM](https://nodei.co/npm/sugarit.png)](https://nodei.co/npm/sugarit/)
+[![NPM](https://nodei.co/npm/sugarit.png?downloads=true)](https://nodei.co/npm/sugarit/)
 
 sugarit is a easy use server
 ## quickstart
