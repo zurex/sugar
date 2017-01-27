@@ -1,10 +1,11 @@
 {
   "name": "sugarit",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "description": "sugar is a fast, scalable, distributed engine ",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha",
+    "build": "babel src -d lib"
   },
   "keywords": [
     "scalable",

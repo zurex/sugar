@@ -57,6 +57,7 @@ export default class Sugar{
           this.__socket__[socket.id] = socket
           Object.keys(this.__appIO__).forEach(appName=>{
               this.__appIO__[appName].forEach(method=>{
+                  this.dispatchEvent.bind(this, appName, 'connect', socket)
                   socket.on(`${appName}.${method}`, this.dispatchEvent.bind(this, appName, method, socket))
               })
           })
