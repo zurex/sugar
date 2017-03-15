@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "noImplicitAny": false,
+        "allowJs": true,
+        "outDir": "lib"
+    },
+    "include": [
+         "src/**/*"
+    ]
+}
